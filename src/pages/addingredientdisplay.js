@@ -9,7 +9,7 @@ const Adddisplay = () => {
     let [display, setDisplay] = useState([]);
 
     let fetchDisplay = () => {
-        let url = "http://localhost/wd76_php/addrecipe.php";
+        let url = "http://localhost/wd76_php/add_display.php";
             axios.get(url).then(
                 (response) => {
                     setDisplay(response.data);

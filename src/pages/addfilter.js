@@ -7,7 +7,7 @@ const Addfilter = () => {
     let [ingrList, setIngrList] = useState([]);
 
     let fetchFilter = () => {
-        let url = "http://localhost/wd76_php/addrecipe.php";
+        let url = "http://localhost/wd76_php/addfilter.php";
             axios.get(url).then(
                 (response) => {
                     setIngrList(response.data);

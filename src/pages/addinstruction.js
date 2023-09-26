@@ -7,7 +7,7 @@ const Instruction = () => {
     let [instruction, setInstruction] = useState([]);
 
     let fetchInstruction = () => {
-        let url = "http://localhost/wd76_php/addrecipe.php";
+        let url = "http://localhost/wd76_php/add_instruction.php";
             axios.get(url).then(
                 (response) => {
                     setInstruction(response.data);

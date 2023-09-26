@@ -8,7 +8,7 @@ const Ingredients = () => {
 
 
     let fetchIngredient = () => {
-        let url = "http://localhost/wd76_php/addrecipe.php";
+        let url = "http://localhost/wd76_php/addingredient.php";
             axios.get(url).then(
                 (response) => {
                     setIngrList(response.data);
