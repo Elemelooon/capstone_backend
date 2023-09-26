@@ -7,6 +7,15 @@ const Addrecipe = () => {
     let [img1, setimg1] = useState("");
     let [recipe, setRecipe] = useState([]);
 
+    let fetchRecipe = () => {
+        let url = "http://localhost/wd76_php/addrecipe.php";
+            axios.get(url).then(
+                (response) => {
+                    setRecipe(response.data);
+                    
+                }
+            );
+    };
     let addRecipe = (e) => {
         e.preventDefault();
         let formData = new FormData();
@@ -21,19 +30,13 @@ const Addrecipe = () => {
             data: formData,
             headers: {'Content-Type': 'multipart/form-data'}
         }).then((response) => {
-            window.location.reload();
+            fetchRecipe();
         })
         //getData now stores the data 
     }
     useEffect(
         () => {
-            let url = "http://localhost/wd76_php/addrecipe.php";
-            axios.get(url).then(
-                (response) => {
-                    setRecipe(response.data);
-                    
-                }
-            );
+            fetchRecipe();
         },[] //by removing the limiter the data will be sent continuosly []
     )// getting the data from the database using axios from the php file that shows the students table
 
@@ -46,7 +49,7 @@ const Addrecipe = () => {
             url: "http://localhost/wd76_php/addrecipe.php",
             data: getData
         }).then((response) => {
-            // alert(response.data);
+            fetchRecipe();
         })
     }
     let updateRecipe = (e) => {
@@ -66,22 +69,36 @@ const Addrecipe = () => {
             headers: {'Content-Type': 'multipart/form-data'}
 
         }).then((response) => {
-            // alert(response.data);
+            fetchRecipe();
         })
     }
     return ( 
         <>
-            <h1>Add Recipe</h1>
+            <div className="container">
+            <h1 className="my-5">Add Recipe</h1>
             <form action="">
-                <input type="text" name="rname" id="recipeName" placeholder="Input Recipe Name" value={recipeName} onChange={(e) => setRecipeName(e.target.value)}/>
-                <input type="text" name="list" id="ingredient" placeholder="Input Ingredient List" value={ingredient} onChange={(e) => setIngredient(e.target.value)}/>
-                <input type="file" name="image1" accept="image/*" onChange={(e) => setimg1(e.target.files[0])}/>
-                <button onClick={addRecipe}>Submit</button>
+                <div className="row">
+                    <div className="col-lg-4">
+                    <input type="text" className="form-control" name="rname" id="recipeName" placeholder="Input Recipe Name" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} required/>
+                    </div>
+                    <div className="col-lg-4">
+                    <input type="text" className="form-control" name="list" id="ingredient" placeholder="Input Ingredient List" value={ingredient} onChange={(e) => setIngredient(e.target.value)} required/>
+                    </div>
+                    <div className="col-lg-4">
+                    <input type="file" className="form-control" name="image1" accept="image/*" onChange={(e) => setimg1(e.target.files[0])}/>
+                    </div>
+                </div>
+                <div className="text-center">
+                    <button onClick={addRecipe} className="btn btn-outline-dark my-5 px-5">Insert</button>
+                </div>
+                
             </form>
             {recipeName} <br />
             {ingredient}<br />
+            </div>
+            <div className="container">
             <h1>Recipe List</h1>
-            <table border={1}>
+            <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th>recipe_name</th>
@@ -94,22 +111,22 @@ const Addrecipe = () => {
                             return(
                             <tr>
                                 <td>
-                                    <input type="text" defaultValue={val.recipe_name} id={"recipe_name"+ val.recipe_id}/>
+                                    <input type="text" defaultValue={val.recipe_name} id={"recipe_name"+ val.recipe_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <input type="text" defaultValue={val.ingredient_list} id={"ingredient_list"+ val.recipe_id} />
+                                    <input type="text" defaultValue={val.ingredient_list} id={"ingredient_list"+ val.recipe_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <img src={`data:image/jpg;base64,${val.image1}`} alt="Recipe" width="100" height="100" />
+                                    <img src={`data:image/jpg;base64,${val.image1}`} alt="Recipe" width="100" height="100"/>
                                 </td>
                                 <td>
-                                    <input type="file" accept="image/*" onChange={(e) => setimg1(e.target.files[0])} id={"image1"+ val.recipe_id} />
+                                    <input type="file" accept="image/*" onChange={(e) => setimg1(e.target.files[0])} id={"image1"+ val.recipe_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <button id={val.recipe_id} onClick={updateRecipe}>UPDATE</button>
+                                    <button id={val.recipe_id} onClick={updateRecipe} className="btn btn-outline-dark">UPDATE</button>
                                 </td>
                                 <td>
-                                    <button id={val.recipe_id} onClick={deleteRecipe}>DELETE</button>
+                                    <button id={val.recipe_id} onClick={deleteRecipe} className="btn btn-outline-dark">DELETE</button>
                                 </td>
                                 
                             </tr>
@@ -120,6 +137,7 @@ const Addrecipe = () => {
                     }
                 </tbody>
             </table>
+            </div>
         </>
      );
 }

@@ -68,20 +68,35 @@ const Adddisplay = () => {
     }
     return ( 
         <>
-            <h1>Add Ingredients</h1>
+            <div className="container">
+            <h1 className="my-5">Add Ingredients</h1>
             <form action="">
-                <input type="text" name="measure" id="measure" placeholder="Input Measurement" value={measure} onChange={(e) => setMeasure(e.target.value)}/>
-                <input type="text" name="ingredient" id="ingredient" placeholder="Input Ingredient" value={ingredient} onChange={(e) => setIngredient(e.target.value)}/>
-                <input type="text" name="comment" id="comment" placeholder="Input comment" value={comment} onChange={(e) => setComment(e.target.value)}/>
-                <input type="text" name="recipe" id="recipe" placeholder="Input Recipe ID" value={recipe} onChange={(e) => setRecipe(e.target.value)}/>
-                <button onClick={addIngredient}>Submit</button>
+                <div className="row">
+                    <div className="col-lg-3">
+                    <input type="text" className="form-control" name="measure" id="measure" placeholder="Input Measurement" value={measure} onChange={(e) => setMeasure(e.target.value)} required/>
+                    </div>
+                    <div className="col-lg-3">
+                    <input type="text" className="form-control" name="ingredient" id="ingredient" placeholder="Input Ingredient" value={ingredient} onChange={(e) => setIngredient(e.target.value)} required/>
+                    </div>
+                    <div className="col-lg-3">
+                    <input type="text" className="form-control" name="comment" id="comment" placeholder="Input comment" value={comment} onChange={(e) => setComment(e.target.value)} required/>
+                    </div>
+                    <div className="col-lg-3">
+                    <input type="text" className="form-control" name="recipe" id="recipe" placeholder="Input Recipe ID" value={recipe} onChange={(e) => setRecipe(e.target.value)} required/>
+                    </div>
+                    <div className="text-center">
+                    <button onClick={addIngredient} className="btn btn-outline-dark my-5 px-5">Submit</button>
+                    </div>
+                </div>
             </form>
+            </div>  
             {measure} <br />
             {ingredient}<br />
             {comment} <br />
             {recipe}<br />
+            <div className="container">
             <h1>Ingredients List</h1>
-            <table border={1}>
+            <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th>measurement</th>
@@ -96,22 +111,22 @@ const Adddisplay = () => {
                             return(
                             <tr>
                                 <td>
-                                    <input type="text" defaultValue={val.measurement} id={"measurement"+ val.recipeingredient_id}/>
+                                    <input type="text" defaultValue={val.measurement} id={"measurement"+ val.recipeingredient_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <input type="text" defaultValue={val.ingredient_display} id={"ingredient_display"+ val.recipeingredient_id} />
+                                    <input type="text" defaultValue={val.ingredient_display} id={"ingredient_display"+ val.recipeingredient_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <input type="text" defaultValue={val.comment} id={"comment"+ val.recipeingredient_id} />
+                                    <input type="text" defaultValue={val.comment} id={"comment"+ val.recipeingredient_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <input type="text" defaultValue={val.recipe_id} id={"recipe_id"+ val.recipeingredient_id} />
+                                    <input type="text" defaultValue={val.recipe_id} id={"recipe_id"+ val.recipeingredient_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <button id={val.recipeingredient_id} onClick={updateRecipe}>UPDATE</button>
+                                    <button id={val.recipeingredient_id} onClick={updateRecipe} className="btn btn-outline-dark">UPDATE</button>
                                 </td>
                                 <td>
-                                    <button id={val.recipeingredient_id} onClick={deleteRecipe}>DELETE</button>
+                                    <button id={val.recipeingredient_id} onClick={deleteRecipe} className="btn btn-outline-dark">DELETE</button>
                                 </td>
                                 
                             </tr>
@@ -122,6 +137,7 @@ const Adddisplay = () => {
                     }
                 </tbody>
             </table>
+            </div>
         </>
      );
 }

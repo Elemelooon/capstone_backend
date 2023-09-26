@@ -62,16 +62,27 @@ const Addfilter = () => {
     }
     return ( 
         <>
-            <h1>Add Ingredients</h1>
-            <form action="">
-                <input type="text" name="recipe" id="recipe" placeholder="Input Recipe ID" value={recipe} onChange={(e) => setRecipe(e.target.value)}/>
-                <input type="text" name="list" id="ingredient" placeholder="Input Ingredient ID" value={ingredient} onChange={(e) => setIngredient(e.target.value)}/>
-                <button onClick={addIngredient}>Submit</button>
-            </form>
+        <div className="container">
+        <h1 className="my-5">Add Ingredients</h1>
+        <form action="">
+            <div className="row">
+                <div className="col-lg-6">
+                <input type="text" className="form-control" name="recipe" id="recipe" placeholder="Input Recipe ID" value={recipe} onChange={(e) => setRecipe(e.target.value)} required/>
+                </div>
+                <div className="col-lg-6">
+                <input type="text" className="form-control" name="list" id="ingredient" placeholder="Input Ingredient ID" value={ingredient} onChange={(e) => setIngredient(e.target.value)} required/>
+                </div>
+                <div className="text-center">
+                <button onClick={addIngredient} className="btn btn-outline-dark my-5 px-5">Submit</button>
+                </div>
+            </div>
+        </form>
+        </div>     
             {recipe} <br />
             {ingredient}<br />
+            <div className="container">
             <h1>Ingredients List</h1>
-            <table border={1}>
+            <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th>recipe_id</th>
@@ -84,16 +95,16 @@ const Addfilter = () => {
                             return(
                             <tr>
                                 <td>
-                                    <input type="text" defaultValue={val.recipe_id} id={"recipe_id"+ val.ingredient_list_id}/>
+                                    <input type="text" defaultValue={val.recipe_id} id={"recipe_id"+ val.ingredient_list_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <input type="text" defaultValue={val.ingredient_id} id={"ingredient_id"+ val.ingredient_list_id} />
+                                    <input type="text" defaultValue={val.ingredient_id} id={"ingredient_id"+ val.ingredient_list_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <button id={val.ingredient_list_id} onClick={updateRecipe}>UPDATE</button>
+                                    <button id={val.ingredient_list_id} onClick={updateRecipe} className="btn btn-outline-dark">UPDATE</button>
                                 </td>
                                 <td>
-                                    <button id={val.ingredient_list_id} onClick={deleteRecipe}>DELETE</button>
+                                    <button id={val.ingredient_list_id} onClick={deleteRecipe} className="btn btn-outline-dark">DELETE</button>
                                 </td>
                                 
                             </tr>
@@ -104,6 +115,7 @@ const Addfilter = () => {
                     }
                 </tbody>
             </table>
+            </div>
         </>
      );
 }

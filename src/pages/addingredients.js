@@ -61,17 +61,28 @@ const Ingredients = () => {
         })
     }
     return ( 
-        <>
-            <h1>Add Ingredients</h1>
+        <>  
+            <div className="container">
+            <h1 className="my-5">Add Ingredients</h1>
             <form action="">
-                <input type="text" name="type" id="type" placeholder="Input Ingredient Type" value={type} onChange={(e) => setType(e.target.value)}/>
-                <input type="text" name="list" id="ingredient" placeholder="Input Ingredient Name" value={ingredient} onChange={(e) => setIngredient(e.target.value)}/>
-                <button onClick={addIngredient}>Submit</button>
+                <div className="row">
+                    <div className="col-lg-6">
+                    <input type="text" className="form-control" name="type" id="type" placeholder="Input Ingredient Type" value={type} onChange={(e) => setType(e.target.value)} required/>
+                    </div>
+                    <div className="col-lg-6">
+                    <input type="text" className="form-control" name="list" id="ingredient" placeholder="Input Ingredient Name" value={ingredient} onChange={(e) => setIngredient(e.target.value)} required/>
+                    </div>
+                </div>
+                <div className="text-center">
+                <button onClick={addIngredient} className="btn btn-outline-dark my-5 px-5">Insert</button>
+                </div>
             </form>
+            </div>
             {type} <br />
             {ingredient}<br />
+            <div className="container">
             <h1>Ingredients List</h1>
-            <table border={1}>
+            <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th>ingredient_type</th>
@@ -84,18 +95,17 @@ const Ingredients = () => {
                             return(
                             <tr>
                                 <td>
-                                    <input type="text" defaultValue={val.ingredient_type} id={"ingredient_type"+ val.ingredient_id}/>
+                                    <input type="text" defaultValue={val.ingredient_type} id={"ingredient_type"+ val.ingredient_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <input type="text" defaultValue={val.ingredient_name} id={"ingredient_name"+ val.ingredient_id} />
+                                    <input type="text" defaultValue={val.ingredient_name} id={"ingredient_name"+ val.ingredient_id} className="form-control"/>
                                 </td>
                                 <td>
-                                    <button id={val.ingredient_id} onClick={updateRecipe}>UPDATE</button>
+                                    <button id={val.ingredient_id} onClick={updateRecipe} className="btn btn-outline-dark">UPDATE</button>
                                 </td>
                                 <td>
-                                    <button id={val.ingredient_id} onClick={deleteRecipe}>DELETE</button>
+                                    <button id={val.ingredient_id} onClick={deleteRecipe} className="btn btn-outline-dark">DELETE</button>
                                 </td>
-                                
                             </tr>
                             );
                             }
@@ -104,6 +114,7 @@ const Ingredients = () => {
                     }
                 </tbody>
             </table>
+            </div>
         </>
      );
 }
