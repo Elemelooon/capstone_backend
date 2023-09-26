@@ -7,7 +7,7 @@ const RandomRec = () => {
     let [recipe, setRecipe] = useState([]);
     
    
-
+//NOT WORKING
     useEffect( () => {
         let url = "http://localhost/wd76_php/randromrec.php";
         axios.get(url).then(

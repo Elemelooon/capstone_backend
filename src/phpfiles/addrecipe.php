@@ -24,11 +24,8 @@ if ($method == "POST") {
         $image1 = $_FILES['image1']['tmp_name'];
         $imageData1 = file_get_contents($image1);
         $base64Image1 = base64_encode($imageData1);
-        $image2 = $_FILES['image2']['tmp_name'];
-        $imageData2 = file_get_contents($image2);
-        $base64Image2 = base64_encode($imageData2);
 
-        $sql = "INSERT INTO recipe_tbl (recipe_name, ingredient_list, image1, image2) VALUES ('$rname', '$list', '$base64Image1', '$base64Image2')";
+        $sql = "INSERT INTO recipe_tbl (recipe_name, ingredient_list, image1) VALUES ('$rname', '$list', '$base64Image1')";
     }else if ($function == 2){
         $id = $_POST ['id'];
         $sql = "DELETE FROM recipe_tbl WHERE recipe_id = '$id'";
@@ -36,7 +33,16 @@ if ($method == "POST") {
         $rname = $_POST['rname'];
         $list = $_POST['list'];
         $id = $_POST ['id'];
-        $sql = "UPDATE recipe_tbl SET recipe_name = '$rname', ingredient_list = '$list' WHERE recipe_id = '$id'";
+        
+        if (isset($_FILES['image1']['tmp_name'])) {
+            $image1 = $_FILES['image1']['tmp_name'];
+            $imageData1 = file_get_contents($image1);
+            $base64Image1 = base64_encode($imageData1);
+            $sql = "UPDATE recipe_tbl SET recipe_name = '$rname', ingredient_list = '$list', image1 = '$base64Image1' WHERE recipe_id = '$id'";
+        } else {
+            // No new image provided, update only the text fields
+            $sql = "UPDATE recipe_tbl SET recipe_name = '$rname', ingredient_list = '$list' WHERE recipe_id = '$id'";
+        }
     }
     
     
