@@ -13,6 +13,9 @@ import Instruction from "./pages/addinstruction";
 import Addfilter from "./pages/addfilter";
 import RandomRec from "./pages/randomrecipe2";
 import Login from "./pages/login";
+import AddLocation from "./pages/addlocation";
+import Addrestaurant from "./pages/addrestaurants";
+import RandomRestaurant from "./pages/randomrestau";
 function App() {
   return (
     <>
@@ -22,13 +25,15 @@ function App() {
       <Route path="/" element={<Home/>}></Route>
       <Route path="/Recipelist" element={<Recipe/>}></Route>
       <Route path="/RandomRecipe" element={<RandomRecipe/>}></Route>
-      <Route path="/RandomRec" element={<RandomRec/>}></Route>
+      <Route path="/RandomRestaurant" element={<RandomRestaurant/>}></Route>
       <Route path="/Addrecipe" element={<Addrecipe/>}></Route>
       <Route path="/Addingredient" element={<Ingredients/>}></Route>
       <Route path="/Adddisplay" element={<Adddisplay/>}></Route>
       <Route path="/Adddisplay" element={<Adddisplay/>}></Route>
       <Route path="/Addinstruction" element={<Instruction/>}></Route>
       <Route path="/Addfilter" element={<Addfilter/>}></Route>
+      <Route path="/Addlocation" element={<AddLocation/>}></Route>
+      <Route path="/Addrestaurant" element={<Addrestaurant/>}></Route>
       <Route path="/Recipelist/recipedetails" element={<Details/>}></Route>
       <Route path="/AdminLogin" element={<Login/>}></Route>
       

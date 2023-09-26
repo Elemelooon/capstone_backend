@@ -19,7 +19,7 @@ const Navigationbar = () => {
                 <Link to="/RandomRecipe">Random Recipes</Link>
             </Nav.Link>
             <Nav.Link>
-                <Link to="/RandomRec">Random Recipes2</Link>
+                <Link to="/RandomRestaurant">Random Restaurant</Link>
             </Nav.Link>
             <NavDropdown title="Add to Database" id="basic-nav-dropdown">
               <NavDropdown.Item>
@@ -36,6 +36,12 @@ const Navigationbar = () => {
               </NavDropdown.Item>
               <NavDropdown.Item>
                 <Link to="/Addfilter">Add Filter</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/Addlocation">Add Location</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/Addrestaurant">Add Restaurant</Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
