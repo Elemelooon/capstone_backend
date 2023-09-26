@@ -21,6 +21,8 @@ const Home = () => {
         checkboxes.forEach(checkbox => {
             if (checkbox.checked == true) {
                 checkbox.checked = false;
+            } else {
+                setRecipeList([]);
             }
         });
     }
@@ -36,17 +38,11 @@ const Home = () => {
                 console.log(array);
             }
         });
-        let getData = new FormData();
-        getData.append('id', array);
-        getData.append('idlength', array.length);
-        // getData.append('function', 1);
-        // axios({
-        //     method: 'POST',
-        //     url: "http://localhost/wd76_php/ingredient_filter.php",
-        //     data: getData
-        // }).then((response) => {
-        //     setRecipeList(response.data);
-        // })
+        if (array.length > 0) {
+            let getData = new FormData();
+            getData.append('id', array);
+            getData.append('idlength', array.length);
+
         axios({
             method: 'POST',
             url: "http://localhost/wd76_php/ingredient_filter2.php",
@@ -55,6 +51,10 @@ const Home = () => {
             setRecipeList(response.data);
             // console.log(response.data);
         })
+        } else {
+            setRecipeList([]);
+        }
+        
     }
     return ( 
         <>
@@ -84,8 +84,6 @@ const Home = () => {
         {
             recipelist.map ((data) => {
                 return (
-                    
-                    
                             <div className="col-md-4">        
                                 <div className="card h-100">
                                 <img src={`data:image/jpg;base64,${data.image1}`} alt={data.recipe_name} className="w-100" />

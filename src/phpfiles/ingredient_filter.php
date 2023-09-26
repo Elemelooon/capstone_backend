@@ -12,13 +12,6 @@ if ($method == "GET") {
 $sql = "SELECT * FROM ingredients_tbl" ;
 }
 
-if ($method == "POST") {
-    // $function = $_POST['function'];
-    // if ($function == 1) {
-        $id = $_POST ['id'];
-        $sql = "SELECT * FROM `ingredients_tbl` WHERE `ingredient_id` IN ($id)";
-    // }
-}
 $result = mysqli_query($conn, $sql);
 if ($method == "GET") {
     echo "[";
@@ -33,6 +26,5 @@ if ($method == "GET") {
         }
     echo "]"; 
     }
-
 
 ?>

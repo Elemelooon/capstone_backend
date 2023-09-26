@@ -12,6 +12,7 @@ import Adddisplay from "./pages/addingredientdisplay";
 import Instruction from "./pages/addinstruction";
 import Addfilter from "./pages/addfilter";
 import RandomRec from "./pages/randomrecipe2";
+import Login from "./pages/login";
 function App() {
   return (
     <>
@@ -25,9 +26,11 @@ function App() {
       <Route path="/Addrecipe" element={<Addrecipe/>}></Route>
       <Route path="/Addingredient" element={<Ingredients/>}></Route>
       <Route path="/Adddisplay" element={<Adddisplay/>}></Route>
+      <Route path="/Adddisplay" element={<Adddisplay/>}></Route>
       <Route path="/Addinstruction" element={<Instruction/>}></Route>
       <Route path="/Addfilter" element={<Addfilter/>}></Route>
       <Route path="/Recipelist/recipedetails" element={<Details/>}></Route>
+      <Route path="/AdminLogin" element={<Login/>}></Route>
       
     </Routes>
     </BrowserRouter>
