@@ -32,13 +32,13 @@ const Addrecipe = () => {
         }).then((response) => {
             fetchRecipe();
         })
-        //getData now stores the data 
+        
     }
     useEffect(
         () => {
             fetchRecipe();
-        },[] //by removing the limiter the data will be sent continuosly []
-    )// getting the data from the database using axios from the php file that shows the students table
+        },[] 
+    )
 
     let deleteRecipe = (e) => {
         let getData = new FormData();

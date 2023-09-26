@@ -6,6 +6,15 @@ const Instruction = () => {
     let [recipe, setRecipe] = useState("");
     let [instruction, setInstruction] = useState([]);
 
+    let fetchInstruction = () => {
+        let url = "http://localhost/wd76_php/addrecipe.php";
+            axios.get(url).then(
+                (response) => {
+                    setInstruction(response.data);
+                    
+                }
+            );
+    };
     let addIngredient = (e) => {
         e.preventDefault();
         let getData = new FormData();
@@ -18,21 +27,15 @@ const Instruction = () => {
             url: "http://localhost/wd76_php/add_instruction.php",
             data: getData
         }).then((response) => {
-            
+            fetchInstruction();
         })
         //getData now stores the data 
     }
     useEffect(
         () => {
-            let url = "http://localhost/wd76_php/add_instruction.php";
-            axios.get(url).then(
-                (response) => {
-                    setInstruction(response.data);
-                    
-                }
-            );
-        },[] //by removing the limiter the data will be sent continuosly []
-    )// getting the data from the database using axios from the php file that shows the students table
+            fetchInstruction();
+        },[] 
+    )
 
     let deleteRecipe = (e) => {
         let getData = new FormData();
@@ -43,7 +46,7 @@ const Instruction = () => {
             url: "http://localhost/wd76_php/add_instruction.php",
             data: getData
         }).then((response) => {
-            // alert(response.data);
+            fetchInstruction();
         })
     }
     let updateRecipe = (e) => {
@@ -57,7 +60,7 @@ const Instruction = () => {
             url: "http://localhost/wd76_php/add_instruction.php",
             data: getData
         }).then((response) => {
-            // alert(response.data);
+            fetchInstruction();
         })
     }
     return ( 

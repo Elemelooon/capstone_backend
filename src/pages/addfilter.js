@@ -6,6 +6,15 @@ const Addfilter = () => {
     let [ingredient, setIngredient] = useState("");
     let [ingrList, setIngrList] = useState([]);
 
+    let fetchFilter = () => {
+        let url = "http://localhost/wd76_php/addrecipe.php";
+            axios.get(url).then(
+                (response) => {
+                    setIngrList(response.data);
+                    
+                }
+            );
+    };
     let addIngredient = (e) => {
         e.preventDefault();
         let getData = new FormData();
@@ -18,21 +27,15 @@ const Addfilter = () => {
             url: "http://localhost/wd76_php/addfilter.php",
             data: getData
         }).then((response) => {
-            // alert(response.data);
+            fetchFilter();
         })
         //getData now stores the data 
     }
     useEffect(
         () => {
-            let url = "http://localhost/wd76_php/addfilter.php";
-            axios.get(url).then(
-                (response) => {
-                    setIngrList(response.data);
-                    
-                }
-            );
-        },[] //by removing the limiter the data will be sent continuosly []
-    )// getting the data from the database using axios from the php file that shows the students table
+            fetchFilter();
+        },[] 
+    )
 
     let deleteRecipe = (e) => {
         let getData = new FormData();
@@ -43,7 +46,7 @@ const Addfilter = () => {
             url: "http://localhost/wd76_php/addfilter.php",
             data: getData
         }).then((response) => {
-            // alert(response.data);
+            fetchFilter();
         })
     }
     let updateRecipe = (e) => {
@@ -57,7 +60,7 @@ const Addfilter = () => {
             url: "http://localhost/wd76_php/addfilter.php",
             data: getData
         }).then((response) => {
-            // alert(response.data);
+            fetchFilter();
         })
     }
     return ( 
