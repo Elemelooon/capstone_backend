@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
-
+import AdminNav from "../components/adminnavbar";
 const Addrestaurant = () => {
     let [restaurantname, setRestaurantName] = useState("");
     let [image1, setimg1] = useState("");
@@ -74,6 +74,7 @@ const Addrestaurant = () => {
     }
     return ( 
         <>
+        <AdminNav></AdminNav>
             <div className="container">
             <h1 className="my-5">Add Restaurant</h1>
             <form action="">

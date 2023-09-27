@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
-
+import AdminNav from "../components/adminnavbar";
 const Instruction = () => {
     let [instruct, setInstruct] = useState("");
     let [recipe, setRecipe] = useState("");
@@ -65,6 +65,7 @@ const Instruction = () => {
     }
     return ( 
         <>
+        <AdminNav></AdminNav>
             <div className="container">
             <h1 className="my-5">Add Ingredients</h1>
             <form action="">

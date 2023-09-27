@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
-
+import AdminNav from "../components/adminnavbar";
 const AddLocation = () => {
     let [location, setLocation] = useState("");
     let [restolocation, setRestoLocation] = useState([]);
@@ -63,6 +63,7 @@ const AddLocation = () => {
     }
     return ( 
         <>  
+        <AdminNav></AdminNav>
             <div className="container">
             <h1 className="my-5">Add Locations</h1>
             <form action="">

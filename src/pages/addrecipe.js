@@ -1,5 +1,8 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import AdminRoute from "../components/route";
+import AdminNav from "../components/adminnavbar";
 
 const Addrecipe = () => {
     let [recipeName, setRecipeName] = useState("");
@@ -74,6 +77,7 @@ const Addrecipe = () => {
     }
     return ( 
         <>
+        <AdminNav></AdminNav>
             <div className="container">
             <h1 className="my-5">Add Recipe</h1>
             <form action="">
